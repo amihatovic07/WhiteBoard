@@ -1,6 +1,6 @@
 # Making HTML Templates
 
-##### LyleSnake | November 11, 2026
+##### LyleSnake | November 17, 2026
 
 When making a website, there are several different approaches to how to set up the navigation. Do you make separate, complete, whole HTML pages and link them together in an index? Do you make one base HTML and switch out parts with JavaScript? 
 
