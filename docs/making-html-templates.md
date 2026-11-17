@@ -90,20 +90,32 @@ The navbar item uses HTML's `href` attribute to link to the URL we used for the 
 Essentially, this is the high-level overview of the process: 
 
 Step 1: User clicks the `Projects` button in the navbar. 
+
 Step 2: The browser goes to `http://127.0.0.1:5000/projects`, sending a GET request to `/projects`.
+
 Step 3: Flask receives the request and executes our custom `projects()` function.
+
 Step 4: Flask passes `projects.html` to Jinja in the `render_template("projects.html")` function.
+
 Step 5: Jinja renders the template. 
-    Step 5.1: Jinja reads `projects.html` and sees the `{% extends "main.html" %}` keyword
-    Step 5.2: Jinja reads `main.html` and sees `{% block content %}` and `{% endblock %}`
-    Step 5.3: Jinja goes back to `projects.html` and pastes everything inside of `{% block content %}` into `main.html` in its `block content` section
-    Step 5.4: Jinja generates a completed HTML string with no Jinja syntax and sends it back to the caller, Flask
-Step 6: Flask returns the response to the browser
-Step 7: The browser shows the exact content we wanted to see at `http://127.0.0.1:5000/projects` 
+
+Step 5.1: Jinja reads `projects.html` and sees the `{% extends "main.html" %}` keyword.
+
+Step 5.2: Jinja reads `main.html` and sees `{% block content %}` and `{% endblock %}`
+
+Step 5.3: Jinja goes back to `projects.html` and pastes everything inside of `{% block content %}` into `main.html` in its `block content` section.
+
+Step 5.4: Jinja generates a completed HTML string with no Jinja syntax and sends it back to the caller, Flask.
+
+Step 6: Flask returns the response to the browser.
+
+Step 7: The browser shows the exact content we wanted to see at `http://127.0.0.1:5000/projects`. 
 
 ## Changing URLs 
 
-One major drawback of this approach, however, is that all the URL linked in the navbar has to match exactly with the Flask decorator. What if the URL needs to change? That could mean going through the app's endpoints and templates, and looking for every mention of it, and updating it manually. Well, luckily Flask has the `url_for()` function that can help with this. 
+One major drawback of this approach, however, is that all the URL linked in the navbar has to match exactly with the Flask decorator. What if the URL needs to change? That could mean going through the app's endpoints and templates, and looking for every mention of it, and updating it manually. 
+
+Well, luckily Flask has the `url_for()` function that can help with this. 
 
 Instead of hardcoding the path in the navbar like so: 
 
