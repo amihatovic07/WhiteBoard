@@ -9,6 +9,10 @@ app = Flask(__name__)
 def root():
     return render_template("home.html")
 
+@app.get("/home")
+def home():
+    return render_template("home.html")
+
 @app.get("/notes")
 def notes():
     return render_template("notes.html")

@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  font-family: Tahoma, sans-serif;
+}
+
+:root {
+  --highlight-color: rgba(29, 249, 84, 0.65);
+}
+
+body {
+  margin: 0px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url(./Images/Pixelated\ 8-Bit\ Background.jpg);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+header {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.logopic {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+.lordreText {
+  color: var(--highlight-color);
+  font-size: 24px;
+  border-radius: 5px;
+  width: fit-content;
+  margin: 0 0 0 20px;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.navbar {
+  margin: 0 0 0 auto;
+  background-color: transparent;
+  height: 60px;
+}
+
+nav.navbar a {
+  align-items: center;
+  padding: 12px 20px;
+  margin-left: 10px;
+  font-size: 18px;
+
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+
+  border: none;
+  border-radius: 15px;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+nav.navbar a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  transform: scale(1.05);
+}
+
+nav.navbar a.active {
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 18px;
+
+  background-color: var(--highlight-color);
+  color: white;
+  text-decoration: none;
+
+  border: none;
+  border-radius: 15px;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+main {
+  padding-top: 50px;
+  margin-left: 40px;
+}
+
+main h1 {
+  color: var(--highlight-color);
+  border-bottom: 2.5px solid var(--highlight-color);
+  width: fit-content;
+}
+
+main p {
+  color: white;
+  font-size: 16px;
+}
+
+.discord {
+  text-decoration: none;
+  color: var(--highlight-color);
+  font-style: italic;
+  font: bolder;
+}
+
+footer {
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding: 1rem 30px;
+}
+
+.Authors {
+  color: var(--highlight-color);
+  margin: 5px;
+}
+
+.Names {
+  font-size: 15px;
+  padding: 10px;
+  margin: 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.copy {
+  font-size: 12px;
+  margin: 0 0 0 auto;
+}
