@@ -1,0 +1,114 @@
+*{
+    box-sizing:border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+body{
+    margin:0px;
+    background-image:url(Images/Pixelated\ 8-Bit\ Background.jpg);
+    background-position:center;
+    background-attachment:fixed;
+    background-size:cover;
+}
+
+
+header{
+    text-align:center;
+    padding-top:20px;
+    padding-bottom:80px; 
+    
+}
+
+.Hub{
+    color:rgba(187, 238, 129, 0.864);
+    font-size:40px;
+    border-bottom:3.5px solid rgb(50, 134, 253);
+    border-radius:5px;
+    width:fit-content;
+    margin:auto;
+}
+
+main{
+    
+padding:100px;
+padding-left:50px;
+
+}
+
+main h1 {
+    color:rgb(25, 164, 180);
+    border-bottom:2.5px solid rgb(25, 164, 180);
+    width:fit-content;
+    
+}
+
+main p {
+    color:white;
+    font-size:20px;
+}
+
+.discord {
+    text-decoration:none;
+    color:rgba(38, 215, 59, 0.926);
+    font-style:italic;
+    font:bolder;
+}
+
+nav{
+    background-color:transparent;
+    height: 60px;
+    margin: 0px;
+    padding:20px;
+   
+}
+
+nav div a{
+    background-color:rgba(120, 214, 110, 0.484);
+    text-decoration:none;
+    font-size:30px;
+    color:rgb(255, 255, 255);
+    display:flex-start;
+    justify-content:space-around;
+    align-items: center;
+    padding:15px;
+    border:5px solid rgba(0, 0, 0, 0.314);
+    border-radius:20px;
+    margin:20px;
+
+}
+
+footer{
+    color:aliceblue;
+    padding-top:400px;
+    position:fixed;
+    display:flex;
+    align-items: baseline;
+    padding-left:30px;
+
+
+}
+
+.Authors{
+    color:rgba(29, 249, 84, 0.652);
+  margin: 20px;
+
+}
+
+.Names{
+    font-size:25px;
+    padding:10px;
+   margin: 0;
+}
+
+ footer img {
+    margin:auto;
+    
+ }
+
+ footer a {
+    text-decoration:none;
+    color:aliceblue;
+ }
+    
+
