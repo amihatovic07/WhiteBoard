@@ -1,0 +1,16 @@
+{% extends "main.html" %} {% block content %}
+
+<h1>Clock</h1>
+
+<form action="/clock" method="post">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required>
+  <label for="timezone">Timezone:</label>
+  <select id="timezone" name="timezone" required>
+    <option value="UTC">UTC</option>
+    <option value="EST">EST</option>
+    <option value="PST">PST</option>
+    <!-- Add more timezones as needed -->
+</form>
+
+{% endblock %}
