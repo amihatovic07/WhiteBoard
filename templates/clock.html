@@ -2,15 +2,57 @@
 
 <h1>Clock</h1>
 
-<form action="/clock" method="post">
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username" required>
-  <label for="timezone">Timezone:</label>
-  <select id="timezone" name="timezone" required>
-    <option value="UTC">UTC</option>
-    <option value="EST">EST</option>
-    <option value="PST">PST</option>
-    <!-- Add more timezones as needed -->
-</form>
+<label for="username">Username:</label>
+<input type="text" id="username" name="username" required>
+
+<label for="timezone">Timezone:</label>
+<input list="timezoneList" id="timezone" name="timezone"
+       placeholder="Type a city or country..." autocomplete="off" required>
+
+<datalist id="timezoneList">
+  <option value="Baker Island, Howland Island (UTC−12:00)" data-offset="UTC-12:00"></option>
+  <option value="American Samoa, Niue (UTC−11:00)" data-offset="UTC-11:00"></option>
+  <option value="Hawaii (UTC−10:00)" data-offset="UTC-10:00"></option>
+  <option value="Marquesas Islands, French Polynesia (UTC−09:30)" data-offset="UTC-09:30"></option>
+  <option value="Alaska (UTC−09:00)" data-offset="UTC-09:00"></option>
+  <option value="Pacific Time: Vancouver, Los Angeles (UTC−08:00)" data-offset="UTC-08:00"></option>
+  <option value="Mountain Time: Calgary, Denver, Arizona (UTC−07:00)" data-offset="UTC-07:00"></option>
+  <option value="Central Time: Chicago, Mexico City (UTC−06:00)" data-offset="UTC-06:00"></option>
+  <option value="Eastern Time: Toronto, New York; Bogotá, Lima (UTC−05:00)" data-offset="UTC-05:00"></option>
+  <option value="Atlantic Time: Halifax; Caracas, La Paz (UTC−04:00)" data-offset="UTC-04:00"></option>
+  <option value="Newfoundland (UTC−03:30)" data-offset="UTC-03:30"></option>
+  <option value="Brasília, Buenos Aires (UTC−03:00)" data-offset="UTC-03:00"></option>
+  <option value="South Georgia, Fernando de Noronha (UTC−02:00)" data-offset="UTC-02:00"></option>
+  <option value="Azores, Cape Verde (UTC−01:00)" data-offset="UTC-01:00"></option>
+  <option value="London (winter), Reykjavik, Accra (UTC±00:00)" data-offset="UTC+00:00"></option>
+  <option value="Paris, Berlin, Lagos (UTC+01:00)" data-offset="UTC+01:00"></option>
+  <option value="Athens, Cairo, Johannesburg (UTC+02:00)" data-offset="UTC+02:00"></option>
+  <option value="Moscow, Istanbul, Nairobi, Riyadh (UTC+03:00)" data-offset="UTC+03:00"></option>
+  <option value="Tehran (UTC+03:30)" data-offset="UTC+03:30"></option>
+  <option value="Dubai, Baku (UTC+04:00)" data-offset="UTC+04:00"></option>
+  <option value="Kabul (UTC+04:30)" data-offset="UTC+04:30"></option>
+  <option value="Karachi, Tashkent (UTC+05:00)" data-offset="UTC+05:00"></option>
+  <option value="India, Sri Lanka (UTC+05:30)" data-offset="UTC+05:30"></option>
+  <option value="Nepal (UTC+05:45)" data-offset="UTC+05:45"></option>
+  <option value="Dhaka, Almaty (UTC+06:00)" data-offset="UTC+06:00"></option>
+  <option value="Myanmar, Cocos Islands (UTC+06:30)" data-offset="UTC+06:30"></option>
+  <option value="Bangkok, Jakarta, Hanoi (UTC+07:00)" data-offset="UTC+07:00"></option>
+  <option value="Beijing, Singapore, Perth (UTC+08:00)" data-offset="UTC+08:00"></option>
+  <option value="Eucla, Western Australia (UTC+08:45)" data-offset="UTC+08:45"></option>
+  <option value="Tokyo, Seoul (UTC+09:00)" data-offset="UTC+09:00"></option>
+  <option value="Adelaide, Darwin (UTC+09:30)" data-offset="UTC+09:30"></option>
+  <option value="Sydney, Brisbane (UTC+10:00)" data-offset="UTC+10:00"></option>
+  <option value="Lord Howe Island (UTC+10:30)" data-offset="UTC+10:30"></option>
+  <option value="Solomon Islands, New Caledonia (UTC+11:00)" data-offset="UTC+11:00"></option>
+  <option value="Auckland, Fiji (UTC+12:00)" data-offset="UTC+12:00"></option>
+  <option value="Chatham Islands, New Zealand (UTC+12:45)" data-offset="UTC+12:45"></option>
+  <option value="Tonga, Samoa (UTC+13:00)" data-offset="UTC+13:00"></option>
+  <option value="Kiritimati, Line Islands (UTC+14:00)" data-offset="UTC+14:00"></option>
+</datalist>
+
+<button id="submitBtn">Submit</button>
+
+
+<p id="output"></p>
 
 {% endblock %}
