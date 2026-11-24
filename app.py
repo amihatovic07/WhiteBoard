@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+import uuid
+from flask import Flask, render_template, jsonify
+
 
 app = Flask(__name__)
 
@@ -24,6 +26,11 @@ def projects():
 @app.get("/forum")
 def forum():
     return render_template("forum.html")
+
+@app.post("/api/boards")
+def create_board():
+    board_id = str(uuid.uuid4())
+    return jsonify({"board_id": board_id})
 
 
 

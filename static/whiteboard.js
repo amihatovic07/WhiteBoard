@@ -2,6 +2,25 @@ const canvas = document.getElementById("whiteboard");
 const ctx = canvas.getContext("2d"); // ctx = context
 const wb = canvas.getBoundingClientRect();
 
+
+const createBoardBtn = document.getElementById("create-board-btn");
+createBoardBtn.addEventListener("click", async () => {
+    try {
+        const response = await fetch("/api/boards", {
+            method: "POST",
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to create a new board");
+        }
+
+        const data = await response.json();
+        const boardId = data.board_id;
+        console.log("New board created with ID:", boardId);
+    } catch (error) {
+        console.error("Error creating a new board:", error);
+    }
+});
 let isDrawing = false;
 let posX = 0;
 let posY = 0;
