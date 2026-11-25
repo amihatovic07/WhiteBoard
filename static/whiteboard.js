@@ -16,11 +16,16 @@ createBoardBtn.addEventListener("click", async () => {
 
         const data = await response.json();
         const boardId = data.board_id;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         console.log("New board created with ID:", boardId);
+
     } catch (error) {
         console.error("Error creating a new board:", error);
     }
 });
+
 let isDrawing = false;
 let posX = 0;
 let posY = 0;
