@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- This script block initializes the API endpoints 
-     It must go in the HTML file, not the JavaScript file.
+     It must go in this HTML file, not the JavaScript file.
      It must also be separate from the script block where
      we link to the external JavaScript file.
 
@@ -10,13 +10,21 @@
 -->
 <script>
     const API = {
-        createBoard: "{{ url_for('api.boards.create') }}"
+        createBoard: "{{ url_for('api.boards.create') }}",
+        saveBoard: "{{ url_for('api.boards.save', b_id='PLACEHOLDER') }}",
+        loadBoard: "{{ url_for('api.boards.load', b_id='PLACEHOLDER') }}"
     }
 </script>
 
 <h1>WhiteBoard</h1>
 
 <button id="create-board-btn">Create New Board</button>
+<button id="save-board-btn">Save Board</button>
+
+<form id="load-board-form">
+    <input id="uuid" name="uuid" type="text" autocomplete="off" placeholder="Enter board uuid...">
+    <input id="load-board-btn" type="submit" value="Load Board">
+</form>
 
 <p>Placeholder text</p>
 

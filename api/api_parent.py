@@ -13,4 +13,4 @@ api_bp.register_blueprint(board_bp)
 
 @api_bp.before_request
 def log_api_request():
-    print(f"API request received from {request.remote_addr} : {request.method} : {request.endpoint} : {request.path}")
+    print(f"API request received from {request.remote_addr} | method: {request.method} | endpoint: {request.path}")
