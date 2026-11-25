@@ -99,11 +99,11 @@ Step 5: Jinja renders the template.
     Step 5.3: Jinja goes back to `projects.html` and pastes everything inside of `{% block content %}` into `main.html` in its `block content` section
     Step 5.4: Jinja generates a completed HTML string with no Jinja syntax and sends it back to the caller, Flask
 Step 6: Flask returns the response to the browser
-Step 7: The browser shows the exact content we wanted to see at `http://127.0.0.1:5000/projects` 
+Step 7: The browser shows the exact content we wanted to see at `http://127.0.0.1:5000/projects`
 
 ## Changing URLs 
 
-One major drawback of this approach, however, is that all the URL linked in the navbar has to match exactly with the Flask decorator. What if the URL needs to change? That could mean going through the app's endpoints and templates, and looking for every mention of it, and updating it manually. Well, luckily Flask has the `url_for()` function that can help with this. 
+One major drawback of this approach, however, is that all the URL linked in the navbar has to match exactly with the Flask decorator. What if the URL needs to change? That could mean going through the app's endpoints and templates, and looking for every mention of it, and updating it manually. Well, luckily Flask has the `url_for()` function that can help with this.
 
 Instead of hardcoding the path in the navbar like so: 
 
@@ -154,4 +154,4 @@ Press CTRL+C to quit
 
 The Flask app server, written in Python, handles the routing. Flask comes with Jinja, a way to customize HTML pages with templates. Rendering HTML on the server means we can enforce permissions. 
 
-It's customizable, scalable, and fun! 
+It's customizable, scalable, and fun!

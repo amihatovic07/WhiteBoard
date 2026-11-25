@@ -1,29 +1,41 @@
-from flask import Flask, render_template
+import uuid
+from flask import Flask, render_template, jsonify
+
 
 app = Flask(__name__)
 
 
 # navigation endpoints 
 
-@app.get("/")
-def root():
+@app.route("/")
+@app.route("/home")
+def home():
     return render_template("home.html")
 
-@app.get("/notes")
+@app.route("/notes")
 def notes():
     return render_template("notes.html")
 
-@app.get("/whiteboard")
+@app.route("/clock")
+def clock():
+    return render_template("clock.html")
+
+@app.route("/whiteboard")
 def whiteboard():
     return render_template("whiteboard.html")
 
-@app.get("/projects")
+@app.route("/projects")
 def projects():
     return render_template("projects.html")
 
-@app.get("/forum")
+@app.route("/forum")
 def forum():
     return render_template("forum.html")
+
+@app.post("/api/boards")
+def create_board():
+    board_id = str(uuid.uuid4())
+    return jsonify({"board_id": board_id})
 
 
 
