@@ -14,7 +14,7 @@ const createBoardBtn = document.getElementById("create-board-btn");
 createBoardBtn.addEventListener("click", async () => {
     try {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        createBoard();
+        await createBoard();
     } catch (error) {
         console.error("Error creating a new board:", error);
     }
@@ -95,7 +95,7 @@ console.log("width: ", canvas.width, " height: ", canvas.height);
 const saveBoardBtn = document.getElementById("save-board-btn");
 saveBoardBtn.addEventListener("click", async () => {
     try {
-        saveBoard();
+        await saveBoard();
     } catch (error) {
         console.error("Error saving board:", error);
     }
