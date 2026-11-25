@@ -1,6 +1,19 @@
 {% extends "main.html" %}
 {% block content %}
 
+<!-- This script block initializes the API endpoints 
+     It must go in the HTML file, not the JavaScript file.
+     It must also be separate from the script block where
+     we link to the external JavaScript file.
+
+     In the external JavaScript file, simply fetch the API.endPoint
+-->
+<script>
+    const API = {
+        createBoard: "{{ url_for('api.boards.create') }}"
+    }
+</script>
+
 <h1>WhiteBoard</h1>
 
 <button id="create-board-btn">Create New Board</button>

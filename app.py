@@ -1,8 +1,13 @@
-import uuid
-from flask import Flask, render_template, jsonify
+"""
+app.py
 
+The entry point and startup space for the web app
+"""
+from flask import Flask, render_template
+from api.api_parent import api_bp
 
 app = Flask(__name__)
+app.register_blueprint(api_bp)
 
 
 # navigation endpoints 
@@ -31,12 +36,6 @@ def projects():
 @app.route("/forum")
 def forum():
     return render_template("forum.html")
-
-@app.post("/api/boards")
-def create_board():
-    board_id = str(uuid.uuid4())
-    return jsonify({"board_id": board_id})
-
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ canvas.height = 480;
 const createBoardBtn = document.getElementById("create-board-btn");
 createBoardBtn.addEventListener("click", async () => {
     try {
-        const response = await fetch("/api/boards", {
+        const response = await fetch(API.createBoard, {
             method: "POST",
         });
 
