@@ -46,8 +46,6 @@ let posY = 0;
     //marker styling inputs:
 const strokeWidthRange = document.getElementById("stroke-range");
 const strokeWidthNumber = document.getElementById("stroke-number")
-const MIN_STROKE_WIDTH = 1;
-const MAX_STROKE_WIDTH = 100;
 
 const strokeColorInput = document.getElementById("color");
     //Initialize strokeWidth using default value of strokeWidthRange
@@ -68,16 +66,6 @@ strokeWidthNumber.addEventListener("input", (event) => {
 });
 
 updateStrokeWidth(strokeWidth);
-    // update via dragging the slider
-// strokeWidthRange.addEventListener('input', () => {
-//     strokeWidth = Number(strokeWidthRange.value);
-//     strokeWidthNumber.value = strokeWidthRange.value;
-// });
-//     // update via inputting stroke number
-// strokeWidthNumber.addEventListener('input', () => {
-//     strokeWidth = Number(strokeWidthNumber.value);
-//     strokeWidthRange.value = strokeWidthNumber.value;
-// });
 
     //set stroke color
 let strokeColor = strokeColorInput.value;
