@@ -46,20 +46,38 @@ let posY = 0;
     //marker styling inputs:
 const strokeWidthRange = document.getElementById("stroke-range");
 const strokeWidthNumber = document.getElementById("stroke-number")
+const MIN_STROKE_WIDTH = 1;
+const MAX_STROKE_WIDTH = 100;
 
 const strokeColorInput = document.getElementById("color");
-    //set stroke width:
-let strokeWidth = 10;
+    //Initialize strokeWidth using default value of strokeWidthRange
+let strokeWidth = Number(strokeWidthRange.value);
+    //sets the strokeWidthControl variables to the same number
+function updateStrokeWidth(value) {
+    strokeWidth = Number(value);
+    strokeWidthRange.value = strokeWidth;
+    strokeWidthNumber.value = strokeWidth;
+}
     // update via dragging the slider
-strokeWidthRange.addEventListener('input', () => {
-    strokeWidth = Number(strokeWidthRange.value);
-    strokeWidthNumber.value = strokeWidthRange.value;
+strokeWidthRange.addEventListener("input", (event) => {
+    updateStrokeWidth(event.target.value);
 });
     // update via inputting stroke number
-strokeWidthNumber.addEventListener('input', () => {
-    strokeWidth = Number(strokeWidthNumber.value);
-    strokeWidthRange.value = strokeWidthNumber.value;
+strokeWidthNumber.addEventListener("input", (event) => {
+    updateStrokeWidth(event.target.value);
 });
+
+updateStrokeWidth(strokeWidth);
+    // update via dragging the slider
+// strokeWidthRange.addEventListener('input', () => {
+//     strokeWidth = Number(strokeWidthRange.value);
+//     strokeWidthNumber.value = strokeWidthRange.value;
+// });
+//     // update via inputting stroke number
+// strokeWidthNumber.addEventListener('input', () => {
+//     strokeWidth = Number(strokeWidthNumber.value);
+//     strokeWidthRange.value = strokeWidthNumber.value;
+// });
 
     //set stroke color
 let strokeColor = strokeColorInput.value;
