@@ -43,8 +43,32 @@ let posX = 0;
 let posY = 0;
 
 // marker styling 
-ctx.lineWidth = 10;
-ctx.strokeStyle = "black";
+    //marker styling inputs:
+const strokeWidthRange = document.getElementById("stroke-range");
+const strokeWidthNumber = document.getElementById("stroke-number")
+
+const strokeColorInput = document.getElementById("color");
+    //set stroke width:
+let strokeWidth = 10;
+    // update via dragging the slider
+strokeWidthRange.addEventListener('input', () => {
+    strokeWidth = Number(strokeWidthRange.value);
+    strokeWidthNumber.value = strokeWidthRange.value;
+});
+    // update via inputting stroke number
+strokeWidthNumber.addEventListener('input', () => {
+    strokeWidth = Number(strokeWidthNumber.value);
+    strokeWidthRange.value = strokeWidthNumber.value;
+});
+
+    //set stroke color
+let strokeColor = strokeColorInput.value;
+    // update via text input
+strokeColorInput.addEventListener('input', () => {
+    strokeColor = strokeColorInput.value;
+})
+
+
 ctx.lineCap = "round";
 ctx.lineJoin = "round";
 
@@ -67,6 +91,8 @@ function stopDrawing() {
 }
 
 function draw(event) {
+    ctx.lineWidth = strokeWidth;
+    ctx.strokeStyle = strokeColor;
     if (isDrawing) {       
         const wb = canvas.getBoundingClientRect();
 
