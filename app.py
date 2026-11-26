@@ -12,6 +12,11 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
+@app.route("/profile")
+def profile():
+    user = {"name": "John Doe"}
+    return render_template("profile.html", user=user)
+
 @app.route("/notes")
 def notes():
     return render_template("notes.html")
