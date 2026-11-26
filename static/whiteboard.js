@@ -5,7 +5,13 @@ const ctx = canvas.getContext("2d"); // ctx = context
 canvas.width = 1450;
 canvas.height = 720;
 
+// the board the user is currently working on
 let currentBoardId = null;
+
+// the boards that have been seen in this session
+let boards = [];
+
+updateBoardList();
 
 // creates a new board with a UUID and clears the current board 
 const createBoardBtn = document.getElementById("create-board-btn");
@@ -13,7 +19,13 @@ createBoardBtn.addEventListener("click", async () => {
     let board_created = false;
     try {
         await createBoard();
+        
         board_created = true;
+        
+        boards.push(currentBoardId);
+        updateBoardList();
+        console.log(boards)
+
     } catch (error) {
         console.error("Error creating a new board:", error);
     }
@@ -40,6 +52,7 @@ async function createBoard() {
 
     const data = await response.json();
     currentBoardId = data.board_id;
+    
     
     console.log("New board created with ID:", currentBoardId);
     return 0;
@@ -146,6 +159,13 @@ async function saveBoard() {
     if (currentBoardId === null) {
         await createBoard();
         console.log("new board inside save board. current board ID: ", currentBoardId);
+
+        if (!boards.includes(currentBoardId)) {
+            boards.push(currentBoardId);
+        }
+
+        updateBoardList();
+
     }
     console.log("Registered click on saveBoardBtn")
     
@@ -187,13 +207,22 @@ loadBoardForm.addEventListener("submit", async (event) => {
 });
 
 
-async function loadBoard(board_uuid) {
-    if (board_uuid.trim() === "") {
+async function loadBoard(user_input) {
+    var cleaned_input = user_input.trim();
+    
+    if (cleaned_input === "") {
+        document.getElementById("current-uuid").innerHTML = `<p style="color: red;">No board to load.</p>`
         console.log("No board to load");
         return;
     }
 
-    const url = API.loadBoard.replace("PLACEHOLDER", board_uuid);
+    if (!boards.includes(cleaned_input)) {
+        document.getElementById("current-uuid").innerHTML = `<p style="color: red;">This board does not exist. Check your input and try again.</p>`
+        console.log("Error: Bad input");
+        return;
+    }
+    
+    const url = API.loadBoard.replace("PLACEHOLDER", cleaned_input);
 
     const response = await fetch(url, {
         method: "GET"
@@ -206,14 +235,18 @@ async function loadBoard(board_uuid) {
     // save the json response data 
     const data = await response.json();
 
+    console.log("Entire response:", data);
+    
     // save the previous board since we will clear it 
-    saveBoard(); 
+    // saveBoard(); 
     
     // set the new current board ID. 
     // this is safe since we already checked that the 
     // board is not null and the server handles enforcing
     // that the uuid actually exists 
-    currentBoardId = data.board_uuid; 
+    currentBoardId = cleaned_input; 
+    console.log("Current board ID:", currentBoardId);
+    displayCurrentUUID(currentBoardId);
 
     // prepare to have some new image data
     const boardImageData = data.image_data; 
@@ -231,5 +264,57 @@ async function loadBoard(board_uuid) {
 
     // tell the browser what to load, comes from the response JSON data 
     image.src = boardImageData; 
-    
+
 }
+
+function getDisplayUuidMessage(uuid) {
+    // handle when there is not a board ID yet
+    let display_uuid = null;
+    if (currentBoardId == null) {
+        display_uuid = "No UUID has been generated for this board. Please save your work."
+    }
+    else {
+        display_uuid = uuid;
+    }
+    return display_uuid; 
+}
+
+// board-uuid-list is the HTML element of boards seen this session
+function updateBoardList() {
+    
+    let b_count = boards.length;
+    let boardIDList = document.getElementById("board-uuid-list");
+    
+    boardIDList.innerHTML = "";
+
+    if (b_count < 1) {
+        boardIDList.innerHTML = `<p>No boards have been created yet.</p>`;
+    }
+    else {
+        // display all boards 
+        for (let i=0; i < b_count; i++) {
+            boardIDList.innerHTML += `<p>board ${i+1} uuid: ${boards[i]}</p>`
+            
+        }
+    }
+
+    displayCurrentUUID(currentBoardId);
+    
+
+    console.log("board count = ", b_count);
+
+}
+
+function displayCurrentUUID(uuid) {
+    let currentBoardIdDisplay = document.getElementById("current-uuid");
+
+    if (uuid != null) {
+        currentBoardIdDisplay.innerHTML = `<p>You are viewing board uuid: ${uuid}</p>`
+    }
+    else {
+        currentBoardIdDisplay.innerHTML =
+            `<p>This board does not have a UUID yet.</p>`;
+    }
+}
+
+console.log(boards)
