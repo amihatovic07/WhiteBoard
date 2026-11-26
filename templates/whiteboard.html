@@ -16,7 +16,6 @@
     }
 </script>
 
-<h1>WhiteBoard</h1>
 
 <button id="create-board-btn">Create New Board</button>
 <button id="save-board-btn">Save Board</button>
@@ -25,21 +24,25 @@
     <input id="uuid" name="uuid" type="text" autocomplete="off" placeholder="Enter board uuid...">
     <input id="load-board-btn" type="submit" value="Load Board">
 </form>
+<br>
 <div class="strokeControls">
-    <div class="stokeWidthControls">
-        <label for="stroke-range">Stroke Width:</label>
+    <div class="strokeWidthControls">
+        <label for="stroke-range">
+           <p> Stroke Width:</p>
+        </label>
         <input type="range" id="stroke-range" value="10" min="1" max="100">
         <input type="number" id="stroke-number" value="10" min="1" max="100" step="1">
     </div>
     <div class="strokeColorControls">
-        <label for="color">Stroke Color:</label>
+        <label for="color">
+            <p>Stroke Color:</p>
+
+            </label>
         <input type="color" id="color">
     </div>
 </div>
+<br>
 
-
-
-<p>Placeholder text</p>
 
 
 
