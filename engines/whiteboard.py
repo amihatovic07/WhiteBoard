@@ -7,10 +7,9 @@ from datetime import datetime
 
 from data.board_manager import boards as b
 
-now = datetime.now()
 
 class Whiteboard:
-    def __init__(self, b_id):
+    def __init__(self, b_id, now):
         self.b_id = b_id 
         self.authors = []
         self.image_data = None
@@ -18,7 +17,7 @@ class Whiteboard:
         self.date_late_update = now # the exact time it was initialized
 
 
-    def add_self_to_data(self):
+    def add_self_to_data(self, now):
         """
         This function is used to save a newly created board to the data store solution, be it a temporary dict or permanent database. 
 
@@ -31,7 +30,7 @@ class Whiteboard:
             "image_data": self.image_data,
             "authors": [author for author in self.authors],
             "date_created": self.date_created, # the exact time it was originally initialized
-            "date_late_update": now # the exact time it was just saved
+            "date_last_updated": now # the exact time it was just saved
         }
 
 

@@ -16,9 +16,13 @@ board_bp = Blueprint("boards", __name__, url_prefix="/boards")
 
 @board_bp.post("/create")
 def create():
-    this_board = Whiteboard(str(uuid.uuid4()))
+    
+    board_data = request.get_json()
+    
+    now = board_data["now"]
 
-    this_board.add_self_to_data()
+    this_board = Whiteboard(str(uuid.uuid4()), now)
+    this_board.add_self_to_data(now)
 
     print(f"board created: {this_board.b_id}")
 

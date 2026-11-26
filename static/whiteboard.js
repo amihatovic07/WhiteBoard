@@ -6,23 +6,32 @@ canvas.width = 720;
 canvas.height = 480;
 
 let currentBoardId = null;
-let now = new Date();
-console.log(now);
 
 // creates a new board with a UUID and clears the current board 
 const createBoardBtn = document.getElementById("create-board-btn");
 createBoardBtn.addEventListener("click", async () => {
+    let board_created = false;
     try {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
         await createBoard();
+        board_created = true;
     } catch (error) {
         console.error("Error creating a new board:", error);
+    }
+
+    if (board_created) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 });
 
 async function createBoard() {
     const response = await fetch(API.createBoard, {
             method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+        },
+            body: JSON.stringify({
+                now: new Date()
+            })
         });
 
     if (!response.ok) {
@@ -119,8 +128,9 @@ async function saveBoard() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            image_data: canvas.toDataURL(),
-            date_last_updated: now
+            image_data: dataURL,
+            date_last_updated: new Date()
+
         }) 
     });
     console.log("submitted POST request to: ", url);
@@ -174,7 +184,7 @@ async function loadBoard(board_uuid) {
     currentBoardId = data.board_uuid; 
 
     // prepare to have some new image data
-    boardImageData = data.image_data; 
+    const boardImageData = data.image_data; 
 
     // creates a new image
     const image = new Image(); 
