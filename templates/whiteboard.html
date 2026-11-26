@@ -1,11 +1,47 @@
 {% extends "main.html" %}
 {% block content %}
 
+<!-- This script block initializes the API endpoints 
+     It must go in this HTML file, not the JavaScript file.
+     It must also be separate from the script block where
+     we link to the external JavaScript file.
+
+     In the external JavaScript file, simply fetch the API.endPoint
+-->
+<script>
+    const API = {
+        createBoard: "{{ url_for('api.boards.create') }}",
+        saveBoard: "{{ url_for('api.boards.save', b_id='PLACEHOLDER') }}",
+        loadBoard: "{{ url_for('api.boards.load', b_id='PLACEHOLDER') }}"
+    }
+</script>
+
 <h1>WhiteBoard</h1>
 
 <button id="create-board-btn">Create New Board</button>
+<button id="save-board-btn">Save Board</button>
+
+<form id="load-board-form">
+    <input id="uuid" name="uuid" type="text" autocomplete="off" placeholder="Enter board uuid...">
+    <input id="load-board-btn" type="submit" value="Load Board">
+</form>
+<div class="strokeControls">
+    <div class="stokeWidthControls">
+        <label for="stroke-range">Stroke Width:</label>
+        <input type="range" id="stroke-range" value="10" min="1" max="100">
+        <input type="number" id="stroke-number" value="10" min="1" max="100" step="1">
+    </div>
+    <div class="strokeColorControls">
+        <label for="color">Stroke Color:</label>
+        <input type="color" id="color">
+    </div>
+</div>
+
+
 
 <p>Placeholder text</p>
+
+
 
 <canvas id="whiteboard"></canvas>
 
