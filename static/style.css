@@ -147,8 +147,157 @@ footer a {
   /* DO NOT SET WHITEBOARD HEIGHT AND WIDTH HERE 
      ONLY SET HEIGHT AND WIDTH IN WHITEBOARD.JS
   */
-    border: 1px solid red;
+    border: 4px solid rgb(0, 158, 16);
     image-rendering: pixelated;
-    cursor: crosshair;
+    cursor: url(./Images/pen.png) 8 8, crosshair !important;
     background-color: white;
+}
+
+
+
+
+#create-board-btn {
+  margin-bottom: 6px;
+  width: 170px;
+  height: 30px;
+  background-color:rgb(71, 138, 72);
+  color:white;
+  border:2px solid rgb(11, 63, 11);
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+#create-board-btn:hover {
+  background-color: rgb(94, 170, 104);
+  border:3px solid rgba(2, 66, 11, 0.938);
+  border-radius: 5px;
+  transform: scale(1.05);
+}
+
+#save-board-btn {
+  width: 140px;
+  height: 30px;
+  background-color:rgb(71, 138, 72);
+  color:white;
+  border:2px solid rgb(11, 63, 11);
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+#save-board-btn:hover {
+  background-color: rgb(94, 170, 104);
+  border:3px solid rgba(2, 66, 11, 0.938);
+  border-radius: 5px;
+  transform: scale(1.05);
+}
+
+#load-board-form {
+  width: 315px;
+  height: 30px;
+  display:flex;
+  justify-content:space-between;
+  
+}
+
+
+#uuid {
+  background-color:rgb(22, 50, 32);
+  color:white;
+  border:2px solid green;
+  border-radius: 5px;
+  text-align: center;
+  
+}
+
+#load-board-btn{
+   width: 100px;
+  height: 30px;
+  background-color:rgb(71, 138, 72);
+  color:white;
+ border:2px solid rgb(11, 63, 11);
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+#load-board-btn:hover {
+  background-color: rgb(94, 170, 104);
+  border:3px solid rgba(2, 66, 11, 0.938);
+  border-radius: 5px;
+  transform: scale(1.05);
+}
+
+.strokeColorControls {
+  padding-top: 0px;
+  height: 40px;
+}
+.strokeWidthControls label {
+  width: 115px;
+  height: 30px;
+  color:white;
+  background-color:rgb(71, 138, 72);
+  border:2px solid rgb(8, 46, 8);
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+.strokeWidthControls label:hover{
+  background-color: rgb(94, 170, 104);
+  border:2px solid rgba(2, 66, 11, 0.938);
+  border-radius: 5px;
+  transform: scale(1.05);
+}
+
+.strokeColorControls label {
+  width: 115px;
+  height: 30px;
+  color:white;
+  background-color:rgb(71, 138, 72);
+  border:2px solid rgb(11, 63, 11);
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+.strokeColorControls label:hover{
+  background-color: rgb(94, 170, 104);
+  border:2px solid rgba(2, 66, 11, 0.938);
+  border-radius: 5px;
+  transform: scale(1.05);
+}
+
+
+.strokeWidthControls label p {
+  justify-content: center;
+  display:flex;
+  align-items: center;
+  padding-top: 2px;
+  flex-direction: column;
+}
+.strokeColorControls label p {
+  justify-content: center;
+  display:flex;
+  align-items: center;
+  padding-top: 2px;
+}
+
+#stroke-range{
+  accent-color: rgb(71, 138, 72);
+}
+#stroke-number{
+  background-color:rgb(71, 138, 72);
+  color:white;
+  width:fit-content;
+  border:2px solid rgb(11, 63, 11);
+  border-radius: 5px;
+  text-align: center;
+}
+
+#color {
+  width: 40px;
+  height: 31px;
+  padding: 0px;
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+
+.strokeColorControls input {
+  transform:translateY(10px);
+  height: 40px;
 }

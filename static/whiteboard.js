@@ -2,8 +2,8 @@ const canvas = document.getElementById("whiteboard");
 const ctx = canvas.getContext("2d"); // ctx = context
 
 // only adjust the canvas height and width here 
-canvas.width = 720;
-canvas.height = 480;
+canvas.width = 1450;
+canvas.height = 720;
 
 let currentBoardId = null;
 
