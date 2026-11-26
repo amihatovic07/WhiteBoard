@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="./../static/Images/Favcon.jpg"/>
     <title>WhiteBoard</title>
     <link rel="stylesheet" href="../static/style.css" />
     <link
@@ -14,14 +15,15 @@
   <body>
     <header>
       <img src="../static/Images/Favcon.jpg" alt="logo" class="logopic" />
-      <h2 class="lordreText">L'Ordre's Hub</h2>
+      <a href="https://discord.gg/VsmHt6cH6" class="community-logo" target="_blank" rel="noopener noreferrer"><h2 class="lordreText">L'Ordre's Hub</h2></a>
 
       <nav class="navbar">
         {% set nav_items = [
           ('home', 'Home'),
           ('whiteboard', 'WhiteBoard'),
           ('notes', 'Notes'),
-          ('clock', 'Clock')
+          ('clock', 'Clock'),
+          ('profile', 'Profile')
         ] %}
 
         {% for endpoint, label in nav_items %}
@@ -29,7 +31,11 @@
           <a href="{{ url_for(endpoint) }}"
             class="{{ 'active' if is_active else '' }}"
             aria-current="{{ 'page' if is_active else 'false' }}">
-            {{ label }}
+            {% if endpoint == 'profile' %}
+              &#128100;
+            {% else %}
+              {{ label }}
+            {% endif %}
           </a>
         {% endfor %}
       </nav>
