@@ -1,25 +1,53 @@
-const username = document.getElementById("username");
-const timezones = document.getElementById("timezone");
-const submitBtn = document.getElementById("submitBtn")
-const output = document.getElementById("output");
-const timezoneOptions = document.querySelectorAll("#timezoneList option")
+const clocks = []
 
-function handleSubmit() {
-    const user = username.value.trim();
-    if (user === "") {
-        output.textContent = "Please enter your Username";
+const clockWall = document.getElementById("clockWall");
+
+async function loadClocks() {
+    const response = await fetch("/api/profiles/");
+    const profiles = await response.json();
+
+    if (profiles.length === 0) {
+        const msg = document.createElement("p");
+        msg.textContent = "No clocks have been set yet. Go to profile page to set one"
+        clockWall.append(msg);
         return;
     }
-    
 
-    const selectedTimezone = [...timezoneOptions].find(o => o.value === timezones.value);
-    if (!selectedTimezone) {
-        output.textContent = "Please pick a timezone from the list";
-        return;
-    } 
-    
-    output.textContent = `${user} : ${selectedTimezone.value}`
-    
+    for (const profile of profiles) {
+        const clockCard = document.createElement("div");
+        clockCard.className = "clockCard";
+        clockWall.append(clockCard);
+
+        const profileName = document.createElement("h3");
+        const profileZone = document.createElement("p");
+        const profileTime = document.createElement("p");
+        profileName.textContent = profile.username;
+        profileZone.textContent = profile.timezone
+        clockCard.append(profileName);
+        clockCard.append(profileZone);
+        clockCard.append(profileTime);
+
+        const formatter = new Intl.DateTimeFormat(undefined, {
+            timeZone: profile.timezone,
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
+
+        clocks.push({element: profileTime, formatter: formatter})
+    }
+
+    updateClocks();
+    setInterval(updateClocks, 1000);
+
 }
 
-submitBtn.addEventListener("click", handleSubmit);
+function updateClocks() {
+    const nowTime = new Date();
+    for (const clock of clocks) {
+        clock.element.textContent = clock.formatter.format(nowTime);
+    }
+
+}
+
+loadClocks()

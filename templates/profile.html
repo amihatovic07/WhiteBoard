@@ -1,6 +1,27 @@
 {% extends "main.html" %}
+
+{% block scripts %} <script src="{{ url_for('static', filename='profile.js') }}" defer></script> {% endblock scripts %}
+
 {% block content %}
-    <h1>User Profile</h1>
+
+
+<label for="username">Username:</label>
+<input id="username" type="text">
+<label for="timezone">Timezone:</label>
+<input id="timezone" type="text" list="timezoneList">
+<datalist id="timezoneList">
+
+</datalist>
+<button id="submitBtn">Save</button>
+<p id="msg"></p>
+
+<!-- Toni
+    Lyle
+    Saint
+    Alex
+    Kernal -->
+
+    <!-- <h1>User Profile</h1>
     <p>Welcome, {{ user.name }}!</p>
     <div class="user-data-overview">
         <p>the content will be fetched from the database</p>
@@ -8,5 +29,5 @@
         <p>email</p>
         <p>password</p>
         <p>other relevant information</p>
-    </div>
+    </div> -->
 {% endblock %}
