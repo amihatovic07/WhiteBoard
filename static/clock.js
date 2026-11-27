@@ -37,7 +37,7 @@ async function loadClocks() {
         });
 
         const dateFormatter = new Intl.DateTimeFormat(undefined, {
-            timeZone: profile.timeZone, 
+            timeZone: profile.timezone, 
             weekday: "short",
             month: "short",
             day: "numeric"
