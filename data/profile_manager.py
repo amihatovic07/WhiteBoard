@@ -1,5 +1,8 @@
+#python's built in IANA library module
+#for zoneinfo to work you must install tzdata
 from zoneinfo import ZoneInfo
 
+#empty dic to store profiles
 profiles = {
 
 }

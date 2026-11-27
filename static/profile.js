@@ -12,13 +12,16 @@ for (const timezone of timezoneList) {
 }
 //get the user's timezone using their browser
 const userCompTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
 if (timezoneList.includes(userCompTimezone)) {
     timezoneElement.value = userCompTimezone;
+}
+else {
+    msg.textContent = "Your timezone is not found in IANA"
 }
 
 async function handleSave() {
     const username = usernameElement.value.trim();
-
     const timezone = timezoneElement.value.trim();
 
     if (username === "") {
