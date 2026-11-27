@@ -20,21 +20,35 @@ async function loadClocks() {
 
         const profileName = document.createElement("h3");
         const profileZone = document.createElement("p");
+        const profileDate = document.createElement("p")
         const profileTime = document.createElement("p");
         profileName.textContent = profile.username;
         profileZone.textContent = profile.timezone
         clockCard.append(profileName);
         clockCard.append(profileZone);
         clockCard.append(profileTime);
+        clockCard.append(profileDate);
 
-        const formatter = new Intl.DateTimeFormat(undefined, {
+        const timeFormatter = new Intl.DateTimeFormat(undefined, {
             timeZone: profile.timezone,
             hour: "2-digit",
             minute: "2-digit",
             second: "2-digit"
         });
 
-        clocks.push({element: profileTime, formatter: formatter})
+        const dateFormatter = new Intl.DateTimeFormat(undefined, {
+            timeZone: profile.timeZone, 
+            weekday: "short",
+            month: "short",
+            day: "numeric"
+        });
+
+        clocks.push({
+            timeElement: profileTime, 
+            timeFormatter: timeFormatter, 
+            dateElement: profileDate, 
+            dateFormatter: dateFormatter
+        })
     }
 
     updateClocks();
@@ -45,7 +59,8 @@ async function loadClocks() {
 function updateClocks() {
     const nowTime = new Date();
     for (const clock of clocks) {
-        clock.element.textContent = clock.formatter.format(nowTime);
+        clock.timeElement.textContent = clock.timeFormatter.format(nowTime);
+        clock.dateElement.textContent = clock.dateFormatter.format(nowTime);
     }
 
 }
